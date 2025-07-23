@@ -21,7 +21,6 @@ public class AuthController {
                     .badRequest()
                     .body(new ApiResponse<>(false, "Tên đăng nhập đã tồn tại!", null));
         }
-
         return ResponseEntity.ok(
                 new ApiResponse<>(true, "Đăng ký thành công!", newUser)
         );

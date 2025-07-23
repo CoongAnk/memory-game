@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Cho tất cả endpoint
-                .allowedOrigins("http://localhost:3000",
+                .allowedOrigins("http://memory-game-api-ren6.onrender.com",
                                 "https://memorygame-cank.site") // Cho phép từ frontend React
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
