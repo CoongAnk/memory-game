@@ -32,7 +32,7 @@ public class GameSessionController {
         return ResponseEntity.ok(new ApiResponse<>(true, "✅ Đã lưu lượt chơi!", daLuu));
     }
 
-    @GetMapping("/lich-su/{username}")
+    @GetMapping("/history/{username}")
     public ResponseEntity<ApiResponse<List<Map<String, Object>>>> layLichSuNguoiChoi(@PathVariable String username) {
         List<GameSession> lichSu = gameSessionService.layLichSuTheoNguoiChoi(username);
 
