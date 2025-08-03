@@ -9,6 +9,7 @@ import java.util.List;
 public interface GameSessionRepository extends JpaRepository<GameSession, Long> {
 
     List<GameSession> findByUser(User user);
-
+    List<GameSession> findByUserId(Long userId);
     List<GameSession> findTop10ByOrderByClickCountAscDurationSecondsAsc();
 }
+    
