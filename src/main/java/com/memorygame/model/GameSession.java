@@ -3,6 +3,8 @@ package com.memorygame.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "game_sessions")
 public class GameSession {
@@ -18,6 +20,7 @@ public class GameSession {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore 
     private User user;
 
     // Constructors

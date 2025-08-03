@@ -3,6 +3,9 @@ package com.memorygame.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -22,6 +25,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    @JsonIgnoreProperties("user")
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<GameSession> gameSessions;
