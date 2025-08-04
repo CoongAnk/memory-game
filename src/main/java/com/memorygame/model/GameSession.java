@@ -23,6 +23,9 @@ public class GameSession {
     @JsonIgnore 
     private User user;
 
+    @Column(name = "game_mode")
+    private String gameMode;
+
     // Constructors
     public GameSession() {}
 
