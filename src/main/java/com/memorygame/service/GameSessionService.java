@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GameSessionService {
@@ -26,10 +27,10 @@ public class GameSessionService {
         return gameSessionRepo.save(g);
     }
 
-    public List<GameSession> layLichSuTheoNguoiChoi(String username) {
-        User user = userRepo.findByUsername(username);
-        if (user == null) return List.of();
-        return gameSessionRepo.findByUser(user);
+    public List<GameSession> layLichSuTheoNguoiChoi(Long userId) {
+        Optional<User> user = userRepo.findById(userId);
+        if (user.isEmpty()) return List.of();
+        return gameSessionRepo.findByUser(user.get());
     }
 
     public List<GameSession> layTopLuotChoi() {
