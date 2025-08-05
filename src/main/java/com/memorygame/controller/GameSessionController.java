@@ -16,19 +16,16 @@ public class GameSessionController {
     @Autowired
     private GameSessionService gameSessionService;
 
-    @PostMapping("/gui-ket-qua/{tenDangNhap}")
+    @PostMapping("/gui-ket-qua/{userId}")
     public ResponseEntity<ApiResponse<GameSession>> guiKetQua(
-            @PathVariable String tenDangNhap,
-            @RequestBody GameSession luotChoi
+        @PathVariable Long userId,
+        @RequestBody GameSession luotChoi
     ) {
-        GameSession daLuu = gameSessionService.luuLuotChoiVaTraVe(tenDangNhap, luotChoi);
-
+        GameSession daLuu = gameSessionService.luuLuotChoiVaTraVe(userId, luotChoi);
         if (daLuu == null) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new ApiResponse<>(false, "Không tìm thấy người dùng!", null));
+            return ResponseEntity.badRequest()
+                .body(new ApiResponse<>(false, "Không tìm thấy người dùng!", null));
         }
-
         return ResponseEntity.ok(new ApiResponse<>(true, "✅ Đã lưu lượt chơi!", daLuu));
     }
 
